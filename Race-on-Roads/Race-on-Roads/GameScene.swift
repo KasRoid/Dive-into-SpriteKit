@@ -15,5 +15,10 @@ class GameScene: SKScene {
         background.zPosition = -1
         background.size = CGSize(width: frame.width, height: frame.height)
         addChild(background)
+        
+        guard let particle = SKEmitterNode(fileNamed: "Mud") else { fatalError() }
+        particle.advanceSimulationTime(10)
+        particle.position.x = frame.width
+        addChild(particle)
     }
 }
