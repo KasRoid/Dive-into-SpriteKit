@@ -10,6 +10,8 @@ import SpriteKit
 
 class GameScene: SKScene {
     
+    private let player = SKSpriteNode(imageNamed: "player-motorbike")
+    
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "road.jpg")
         background.zPosition = -1
@@ -20,5 +22,9 @@ class GameScene: SKScene {
         particle.advanceSimulationTime(10)
         particle.position.x = frame.width
         addChild(particle)
+        
+        player.position.x = -frame.width / 2 + player.frame.width
+        player.zPosition = 1
+        addChild(player)
     }
 }
