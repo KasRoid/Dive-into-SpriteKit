@@ -149,8 +149,18 @@ extension GameScene: SKPhysicsContactDelegate {
             node.removeFromParent()
             return
         }
+        if let particles = SKEmitterNode(fileNamed: "Explosion") {
+            particles.position = player.position
+            particles.zPosition = 3
+            addChild(particles)
+        }
+        
         let sound = SKAction.playSoundFileNamed("explosion", waitForCompletion: false)
         run(sound)
         player.removeFromParent()
+        backgroundMusic.removeFromParent()
+        let gameOver = SKSpriteNode(imageNamed: "gameOver-1")
+        gameOver.zPosition = 10
+        addChild(gameOver)
     }
 }

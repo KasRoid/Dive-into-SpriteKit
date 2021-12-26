@@ -23,6 +23,7 @@
 		42D0F17F27781D690049EDAE /* upbeat-forever.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 42D0F17827781D680049EDAE /* upbeat-forever.mp3 */; };
 		42D0F18027781D690049EDAE /* overworld.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 42D0F17927781D680049EDAE /* overworld.mp3 */; };
 		42D0F18127781D690049EDAE /* bonus.wav in Resources */ = {isa = PBXBuildFile; fileRef = 42D0F17A27781D690049EDAE /* bonus.wav */; };
+		42D0F18327781F2E0049EDAE /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 42D0F18227781F2E0049EDAE /* Explosion.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		42D0F17827781D680049EDAE /* upbeat-forever.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "upbeat-forever.mp3"; sourceTree = "<group>"; };
 		42D0F17927781D680049EDAE /* overworld.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = overworld.mp3; sourceTree = "<group>"; };
 		42D0F17A27781D690049EDAE /* bonus.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bonus.wav; sourceTree = "<group>"; };
+		42D0F18227781F2E0049EDAE /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				42661E9D2773F05200E60D5F /* ViewController.swift */,
 				42661EAF2773F57600E60D5F /* GameScene.sks */,
 				42661EAD2773F54A00E60D5F /* GameScene.swift */,
+				42D0F18227781F2E0049EDAE /* Explosion.sks */,
 				42661EB12774068800E60D5F /* Mud.sks */,
 				42661E9F2773F05200E60D5F /* Main.storyboard */,
 				42661EA22773F05400E60D5F /* Assets.xcassets */,
@@ -168,6 +171,7 @@
 				42D0F17E27781D690049EDAE /* cyborg-ninja.mp3 in Resources */,
 				42D0F17B27781D690049EDAE /* explosion.wav in Resources */,
 				42661EB02773F57600E60D5F /* GameScene.sks in Resources */,
+				42D0F18327781F2E0049EDAE /* Explosion.sks in Resources */,
 				42D0F17C27781D690049EDAE /* exhilarate.mp3 in Resources */,
 				42661EB22774068800E60D5F /* Mud.sks in Resources */,
 				42661EA62773F05400E60D5F /* LaunchScreen.storyboard in Resources */,
