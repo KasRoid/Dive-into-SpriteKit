@@ -15,13 +15,15 @@ class GameScene: SKScene {
     private let player = SKSpriteNode(imageNamed: "player-motorbike")
     private var touchingPlayer = false
     private let motionManager = CMMotionManager()
+    private var gameTimer: Timer?
     
     // MARK: - Lifecycle
     override func didMove(to view: SKView) {
         setBackground()
         setParticles()
         setPlayer()
-        motionManager.startAccelerometerUpdates()
+        gameTimer = Timer.scheduledTimer(timeInterval: 0.35, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
+//        motionManager.startAccelerometerUpdates()
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -56,7 +58,7 @@ class GameScene: SKScene {
 // MARK: - UI
 extension GameScene {
     func setBackground() {
-        let background = SKSpriteNode(imageNamed: "road.jpg")
+        let background = SKSpriteNode(imageNamed: "road")
         background.zPosition = -1
         background.size = CGSize(width: frame.width, height: frame.height)
         addChild(background)
@@ -73,5 +75,19 @@ extension GameScene {
         player.position.x = -frame.width / 2 + player.frame.width
         player.zPosition = 1
         addChild(player)
+    }
+    
+    @objc
+    private func createEnemy() {
+        let randomDistribution = GKRandomDistribution(lowestValue: -350, highestValue: 350)
+        let sprite = SKSpriteNode(imageNamed: "car")
+        sprite.position = CGPoint(x: 300, y: randomDistribution.nextInt())
+        sprite.name = "enemy"
+        sprite.zPosition = 1
+        addChild(sprite)
+        
+        sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
+        sprite.physicsBody?.velocity = CGVector(dx: -500, dy: 0)
+        sprite.physicsBody?.linearDamping = 0
     }
 }
