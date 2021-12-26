@@ -16,6 +16,13 @@
 		42661EAE2773F54A00E60D5F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42661EAD2773F54A00E60D5F /* GameScene.swift */; };
 		42661EB02773F57600E60D5F /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 42661EAF2773F57600E60D5F /* GameScene.sks */; };
 		42661EB22774068800E60D5F /* Mud.sks in Resources */ = {isa = PBXBuildFile; fileRef = 42661EB12774068800E60D5F /* Mud.sks */; };
+		42D0F17B27781D690049EDAE /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 42D0F17427781D670049EDAE /* explosion.wav */; };
+		42D0F17C27781D690049EDAE /* exhilarate.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 42D0F17527781D670049EDAE /* exhilarate.mp3 */; };
+		42D0F17D27781D690049EDAE /* firebrand.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 42D0F17627781D680049EDAE /* firebrand.mp3 */; };
+		42D0F17E27781D690049EDAE /* cyborg-ninja.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 42D0F17727781D680049EDAE /* cyborg-ninja.mp3 */; };
+		42D0F17F27781D690049EDAE /* upbeat-forever.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 42D0F17827781D680049EDAE /* upbeat-forever.mp3 */; };
+		42D0F18027781D690049EDAE /* overworld.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 42D0F17927781D680049EDAE /* overworld.mp3 */; };
+		42D0F18127781D690049EDAE /* bonus.wav in Resources */ = {isa = PBXBuildFile; fileRef = 42D0F17A27781D690049EDAE /* bonus.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +37,13 @@
 		42661EAD2773F54A00E60D5F /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		42661EAF2773F57600E60D5F /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		42661EB12774068800E60D5F /* Mud.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Mud.sks; sourceTree = "<group>"; };
+		42D0F17427781D670049EDAE /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
+		42D0F17527781D670049EDAE /* exhilarate.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = exhilarate.mp3; sourceTree = "<group>"; };
+		42D0F17627781D680049EDAE /* firebrand.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = firebrand.mp3; sourceTree = "<group>"; };
+		42D0F17727781D680049EDAE /* cyborg-ninja.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "cyborg-ninja.mp3"; sourceTree = "<group>"; };
+		42D0F17827781D680049EDAE /* upbeat-forever.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "upbeat-forever.mp3"; sourceTree = "<group>"; };
+		42D0F17927781D680049EDAE /* overworld.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = overworld.mp3; sourceTree = "<group>"; };
+		42D0F17A27781D690049EDAE /* bonus.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bonus.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,10 +84,25 @@
 				42661EB12774068800E60D5F /* Mud.sks */,
 				42661E9F2773F05200E60D5F /* Main.storyboard */,
 				42661EA22773F05400E60D5F /* Assets.xcassets */,
+				42D0F17327781D4E0049EDAE /* SoundEffects */,
 				42661EA42773F05400E60D5F /* LaunchScreen.storyboard */,
 				42661EA72773F05400E60D5F /* Info.plist */,
 			);
 			path = "Race-on-Roads";
+			sourceTree = "<group>";
+		};
+		42D0F17327781D4E0049EDAE /* SoundEffects */ = {
+			isa = PBXGroup;
+			children = (
+				42D0F17A27781D690049EDAE /* bonus.wav */,
+				42D0F17727781D680049EDAE /* cyborg-ninja.mp3 */,
+				42D0F17527781D670049EDAE /* exhilarate.mp3 */,
+				42D0F17427781D670049EDAE /* explosion.wav */,
+				42D0F17627781D680049EDAE /* firebrand.mp3 */,
+				42D0F17927781D680049EDAE /* overworld.mp3 */,
+				42D0F17827781D680049EDAE /* upbeat-forever.mp3 */,
+			);
+			path = SoundEffects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +163,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42D0F17D27781D690049EDAE /* firebrand.mp3 in Resources */,
+				42D0F17F27781D690049EDAE /* upbeat-forever.mp3 in Resources */,
+				42D0F17E27781D690049EDAE /* cyborg-ninja.mp3 in Resources */,
+				42D0F17B27781D690049EDAE /* explosion.wav in Resources */,
 				42661EB02773F57600E60D5F /* GameScene.sks in Resources */,
+				42D0F17C27781D690049EDAE /* exhilarate.mp3 in Resources */,
 				42661EB22774068800E60D5F /* Mud.sks in Resources */,
 				42661EA62773F05400E60D5F /* LaunchScreen.storyboard in Resources */,
+				42D0F18127781D690049EDAE /* bonus.wav in Resources */,
+				42D0F18027781D690049EDAE /* overworld.mp3 in Resources */,
 				42661EA32773F05400E60D5F /* Assets.xcassets in Resources */,
 				42661EA12773F05200E60D5F /* Main.storyboard in Resources */,
 			);

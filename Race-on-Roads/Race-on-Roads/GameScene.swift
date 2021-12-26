@@ -22,6 +22,7 @@ class GameScene: SKScene {
             scoreLabel.text = "SCORE: \(newValue)"
         }
     }
+    private let backgroundMusic = SKAudioNode(fileNamed: "firebrand")
     
     // MARK: - Lifecycle
     override func didMove(to view: SKView) {
@@ -38,6 +39,7 @@ class GameScene: SKScene {
         player.physicsBody = SKPhysicsBody(texture: player.texture!, size: player.size)
         player.physicsBody?.categoryBitMask = 1
         physicsWorld.contactDelegate = self
+        addChild(backgroundMusic)
 //        motionManager.startAccelerometerUpdates()
     }
     
@@ -147,6 +149,8 @@ extension GameScene: SKPhysicsContactDelegate {
             node.removeFromParent()
             return
         }
+        let sound = SKAction.playSoundFileNamed("explosion", waitForCompletion: false)
+        run(sound)
         player.removeFromParent()
     }
 }
