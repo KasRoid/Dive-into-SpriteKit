@@ -44,6 +44,11 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        for node in children {
+            if node.position.x < -700 {
+                node.removeFromParent()
+            }
+        }
         guard let accelerometerData = motionManager.accelerometerData else { return }
         let changeX = CGFloat(accelerometerData.acceleration.y) * 10
         let changeY = CGFloat(accelerometerData.acceleration.x) * 10
@@ -51,7 +56,21 @@ class GameScene: SKScene {
         player.position.y += changeY
         
         if abs(changeX) + abs(changeY) <= 2 {
-            score += 1
+            if player.parent != nil {
+                score += 1
+            }
+        }
+        
+        if player.position.x < -400 {
+            player.position.x = -400
+        } else if player.position.x > 400 {
+            player.position.x = 400
+        }
+        
+        if player.position.y < -300 {
+            player.position.y = -300
+        } else if player.position.y > 300 {
+            player.position.y = 300
         }
     }
     
@@ -142,7 +161,7 @@ extension GameScene: SKPhysicsContactDelegate {
             playerHit(nodeA)
         }
     }
-    
+     
     func playerHit(_ node: SKNode) {
         if node.name == "bonus" {
             score += 1
@@ -154,6 +173,13 @@ extension GameScene: SKPhysicsContactDelegate {
             particles.zPosition = 3
             addChild(particles)
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2,
+                                      execute: {
+            if let scene = GameScene(fileNamed: "GameScene") {
+                scene.scaleMode = .aspectFill
+                self.view?.presentScene(scene)
+            }
+        })
         
         let sound = SKAction.playSoundFileNamed("explosion", waitForCompletion: false)
         run(sound)
