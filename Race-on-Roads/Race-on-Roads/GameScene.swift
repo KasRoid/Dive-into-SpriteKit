@@ -16,13 +16,28 @@ class GameScene: SKScene {
     private var touchingPlayer = false
     private let motionManager = CMMotionManager()
     private var gameTimer: Timer?
+    private let scoreLabel = SKLabelNode(fontNamed: "AvenirNextCondensed-Bold")
+    private var score = 0 {
+        willSet {
+            scoreLabel.text = "SCORE: \(newValue)"
+        }
+    }
     
     // MARK: - Lifecycle
     override func didMove(to view: SKView) {
+        scoreLabel.zPosition = 2
+        scoreLabel.position.y = 100
+        addChild(scoreLabel)
+        score = 0
+        
+        physicsWorld.gravity = .zero
         setBackground()
         setParticles()
         setPlayer()
         gameTimer = Timer.scheduledTimer(timeInterval: 0.35, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
+        player.physicsBody = SKPhysicsBody(texture: player.texture!, size: player.size)
+        player.physicsBody?.categoryBitMask = 1
+        physicsWorld.contactDelegate = self
 //        motionManager.startAccelerometerUpdates()
     }
     
@@ -32,6 +47,10 @@ class GameScene: SKScene {
         let changeY = CGFloat(accelerometerData.acceleration.x) * 10
         player.position.x -= changeX
         player.position.y += changeY
+        
+        if abs(changeX) + abs(changeY) <= 2 {
+            score += 1
+        }
     }
     
     // MARK: - Touches
@@ -89,5 +108,45 @@ extension GameScene {
         sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
         sprite.physicsBody?.velocity = CGVector(dx: -500, dy: 0)
         sprite.physicsBody?.linearDamping = 0
+        sprite.physicsBody?.contactTestBitMask = 1
+        sprite.physicsBody?.categoryBitMask = 0
+        createBonus()
+    }
+    
+    private func createBonus() {
+        let randomDistribution = GKRandomDistribution(lowestValue: -350, highestValue: 350)
+        let sprite = SKSpriteNode(imageNamed: "coin")
+        sprite.position = CGPoint(x: 300, y: randomDistribution.nextInt())
+        sprite.name = "bonus"
+        sprite.zPosition = 1
+        addChild(sprite)
+        
+        sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
+        sprite.physicsBody?.velocity = CGVector(dx: -500, dy: 0)
+        sprite.physicsBody?.linearDamping = 0
+        sprite.physicsBody?.contactTestBitMask = 1
+        sprite.physicsBody?.categoryBitMask = 0
+        sprite.physicsBody?.collisionBitMask = 0
+    }
+}
+
+// MARK: - SKPhysicsContactDelegate
+extension GameScene: SKPhysicsContactDelegate {
+    func didBegin(_ contact: SKPhysicsContact) {
+        guard let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node else { return }
+        if nodeA == player {
+            playerHit(nodeB)
+        } else {
+            playerHit(nodeA)
+        }
+    }
+    
+    func playerHit(_ node: SKNode) {
+        if node.name == "bonus" {
+            score += 1
+            node.removeFromParent()
+            return
+        }
+        player.removeFromParent()
     }
 }
